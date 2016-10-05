@@ -1,6 +1,7 @@
 class AccountActivationsController < ApplicationController
 
   def edit
+    # activate account if email and tokens(id) match
     user = User.find_by(email: params[:email])
     if user && !user.activated? && user.authenticated?(:activation, params[:id])
       user.activate

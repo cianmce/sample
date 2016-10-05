@@ -40,6 +40,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
         } 
       }
     end
+    assert_equal 1, ActionMailer::Base.deliveries.size
+    
     user = assigns(:user)
 
     follow_redirect!
