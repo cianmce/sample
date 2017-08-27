@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+  # after_action :verify_authorized
+  # after_action :verify_policy_scoped
 
   def index
     # @users = User.paginate(page: params[:page])
@@ -11,9 +13,12 @@ class UsersController < ApplicationController
   end
 
   def show
+
     @user = User.find(params[:id])
-    @microposts = @user.microposts
-      .paginate(page: params[:page], :per_page => params[:per_page])
+    # @microposts = policy_scope(Micropost).paginate(page: params[:page], :per_page => params[:per_page])
+    # authorize @microposts.first
+    @microposts = @user.microposts.paginate(page: params[:page], :per_page => params[:per_page])
+    # puts Pundit.policy(@user, @microposts.first).something_else?
   end
 
   def new

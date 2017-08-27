@@ -1,4 +1,14 @@
 class User < ApplicationRecord
+  belongs_to :company
+  # https://stackoverflow.com/questions/5120703/creating-a-many-to-many-relationship-in-rails
+  # has_and_belongs_to_many roles
+  # def permissions_for(game)
+  #   role = role_for(game)
+  #   role.permissions
+  # end
+  # has_many :permissions, through: :roles
+  # or just custom sql to get permissions
+
   # Getter/setters
   attr_accessor :remember_token, :activation_token, :reset_token
 
