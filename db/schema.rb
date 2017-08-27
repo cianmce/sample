@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170827185114) do
+ActiveRecord::Schema.define(version: 20170827204116) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -60,13 +60,13 @@ ActiveRecord::Schema.define(version: 20170827185114) do
 
   create_table "user_roles", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "roles_id"
+    t.integer  "role_id"
     t.integer  "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_user_roles_on_game_id"
-    t.index ["roles_id"], name: "index_user_roles_on_roles_id"
-    t.index ["user_id", nil, "game_id"], name: "index_user_roles_on_user_id_and_role_id_and_game_id", unique: true
+    t.index ["role_id", "role_id", "game_id"], name: "index_user_roles_on_role_id_and_role_id_and_game_id", unique: true
+    t.index ["role_id"], name: "index_user_roles_on_role_id"
     t.index ["user_id"], name: "index_user_roles_on_user_id"
   end
 

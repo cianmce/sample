@@ -1,13 +1,39 @@
 class User < ApplicationRecord
   belongs_to :company
+
+  has_many :user_roles
+  has_many :roles, through: :user_roles
+
+  has_many :permissions, through: :roles
+
+
+  # has_and_belongs_to_many :games, join_table: :roles_users
+
+  # u.user_roles.build(role: r, game: g)
+
   # https://stackoverflow.com/questions/5120703/creating-a-many-to-many-relationship-in-rails
-  # has_and_belongs_to_many roles
   # def permissions_for(game)
-  #   role = role_for(game)
-  #   role.permissions
-  # end
-  # has_many :permissions, through: :roles
+  # def role_for(game)
+
   # or just custom sql to get permissions
+
+
+  def permissions_for(game)
+    self.permissions.where("user_roles.game_id = ?",  game.id)
+  end
+
+  def roles_for(game)
+    self.roles.where("user_roles.game_id = ?",  game.id)
+  end
+
+  def permission_for?(game, permission_name)
+    # maybe better to user permissions.id and have ids as const but meh
+    self.permissions.where(
+        "user_roles.game_id = ? AND permissions.name = ?",
+        game.id,
+        permission_name
+      ).count > 0
+  end
 
   # Getter/setters
   attr_accessor :remember_token, :activation_token, :reset_token
