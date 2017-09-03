@@ -17,6 +17,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 
 gem 'bootstrap-sass','3.3.6'
 
+gem 'attr_encrypted', '~> 3.0', '>= 3.0.3'
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'

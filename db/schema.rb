@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170827204116) do
+ActiveRecord::Schema.define(version: 20170903204713) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -21,8 +21,11 @@ ActiveRecord::Schema.define(version: 20170827204116) do
   create_table "games", force: :cascade do |t|
     t.string   "name"
     t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.text     "p12"
+    t.text     "encrypted_secure_p12"
+    t.text     "encrypted_secure_p12_iv"
     t.index ["company_id"], name: "index_games_on_company_id"
   end
 
