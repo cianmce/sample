@@ -1,8 +1,10 @@
+
+
 class Game < ApplicationRecord
   belongs_to :company
   has_and_belongs_to_many :role
   has_and_belongs_to_many :user
-  attr_encrypted :secure_p12, key: 'YWJjZDEyMzRhYmNkYWJjZDEyMzRhYmNkYWJjZDEyMzRhYmNk'
+  attr_encrypted :secure_p12, key: 'YWJjZDEyMzRhYmNkYWJjZDEyMzRhYmNkYWJjZDEyMzRhYmNk', allow_empty_value: true, marshaler: Marshal, marshal: true
 
 
   # https://github.com/attr-encrypted/attr_encrypted
@@ -35,8 +37,6 @@ class Game < ApplicationRecord
 #     game.save!
 #   end
 # end
-
-
 
 
 
