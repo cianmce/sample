@@ -1,3 +1,7 @@
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/cianmce/sample.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cianmce/sample/alerts/)
+
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/cianmce/sample.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cianmce/sample/context:javascript)
+
 # Ruby on Rails Tutorial sample application
 
 This is the sample application for
